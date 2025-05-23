@@ -13,7 +13,6 @@ Bundle 'ctrlp.vim'
 Bundle 'Syntastic'
 Bundle 'bling/vim-airline'
 Bundle 'fatih/vim-go'
-Bundle 'TwitVim'
 Bundle 'taglist.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
@@ -25,6 +24,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'stephpy/vim-yaml'
+Bundle 'mattn/webapi-vim'
 
 " Clojure Plugins
 Bundle 'guns/vim-clojure-static'
@@ -50,6 +50,7 @@ Bundle "lambdatoast/elm.vim"
 " Ruby Plugins
 Bundle 'thoughtbot/vim-rspec'
 
+" Rust Plugins
 Bundle 'hashivim/vim-terraform'
 
 " Elixir
@@ -61,6 +62,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-endwise'
 Bundle 'ngmy/vim-rubocop'
 
+Plugin 'rust-lang/rust.vim'
 
 " end of Vundle setup
 
@@ -184,9 +186,6 @@ map <silent><C-Right> <C-]>
 au FileType python nnoremap <leader>r :!python %<Enter>
 au FileType python nnoremap <leader>t :!green<Enter>
 
-" twitvim
-let twitvim_count = 100
-
 augroup filetypedetect
   au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
 augroup END
@@ -222,16 +221,20 @@ let g:vim_json_syntax_conceal = 0
 " remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
 
+" comfortable esc
+inoremap jj <esc>
+
 " elm shortcuts
 au FileType text nnoremap <leader>el :ElmEvalLine<CR>
 vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
 nnoremap <leader>em :ElmMakeCurrentFile<CR>
-
-" comfortable esc
-inoremap jj <esc>
 
 " RSpec.vim mappings
 au FileType ruby map <Leader>r :call RunCurrentSpecFile()<CR>
 au FileType ruby map <Leader>s :call RunNearestSpec()<CR>
 au FileType ruby map <Leader>l :call RunLastSpec()<CR>
 au FileType ruby map <Leader>a :call RunAllSpecs()<CR>
+
+" rust
+let g:rustfmt_autosave = 1
+let g:rust_clip_command = 'xclip -selection clipboard'
